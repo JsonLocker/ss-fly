@@ -35,7 +35,7 @@ uninstall:
 ./shadowsocksR.sh uninstall
 ```
 
-# 一键开启BBR加速
+### bbr
 BBR支持4.9以上的，如果低于这个版本则会自动下载最新内容版本的内核后开启BBR加速并重启，如果高于4.9以上则自动开启BBR加速，执行如下脚本命令即可自动开启BBR加速：
 ```
 ss-fly/ss-fly.sh -bbr
