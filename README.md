@@ -1,47 +1,52 @@
-一键脚本安装shadowsocks/shadowsocksR/V2Ray + 开启bbr
----
+### install ss
+```
+ git clone https://github.com/suniceman/ss-fly
+ ss-fly/ss-fly.sh -i jsonlocker 1024
+```
+option:
 
-一键脚本搭建shadowsocks/shadowsocksR/V2Ray + 设置开启自启动 + 升级内核&开启bbr加速。
+```
+ 启动：/etc/init.d/ss-fly start
+ 停止：/etc/init.d/ss-fly stop
+ 重启：/etc/init.d/ss-fly restart
+ 状态：/etc/init.d/ss-fly status
+ 查看ss链接：ss-fly/ss-fly.sh -sslink
+ 修改配置文件：vim /etc/shadowsocks.json
+ ```
+ 
+ ### install ssr
+ ```
+ git clone https://github.com/suniceman/ss-fly
+ ss-fly/ss-fly.sh -ssr
+ ```
+ 
+ option:
+ ```
+ 启动：/etc/init.d/shadowsocks start
+ 停止：/etc/init.d/shadowsocks stop
+ 重启：/etc/init.d/shadowsocks restart
+ 状态：/etc/init.d/shadowsocks status
+ 配置文件路径：/etc/shadowsocks.json
+ 日志文件路径：/var/log/shadowsocks.log
+ 代码安装目录：/usr/local/shadowsocks
+```
+uninstall:
+```
+./shadowsocksR.sh uninstall
+```
 
-## 教程如何访问
+# 一键开启BBR加速
+BBR支持4.9以上的，如果低于这个版本则会自动下载最新内容版本的内核后开启BBR加速并重启，如果高于4.9以上则自动开启BBR加速，执行如下脚本命令即可自动开启BBR加速：
+```
+ss-fly/ss-fly.sh -bbr
+```
+装完后需要重启系统，输入y即可立即重启，或者之后输入reboot命令重启。
 
-[Suniceman小站](https://suniceman.com/2019/04/10/install-shadowsocks-in-one-command/)
-
-## 支持系统
-
-CentOS 6+
-
-Debian 7+
-
-Ubuntu 12+
-
-## 使用教程
-
-一键搭建ss/ssr：[一键脚本搭建shadowsocks+开启bbr](https://suniceman.com/2019/04/10/install-shadowsocks-in-one-command/)
-
-## 推荐的VPS
-
-### 国外VPS
-
-[Vultr优惠网](https://www.vultryhw.cn/)
-
-[搬瓦工优惠网](https://www.bwgyhw.cn/)
-
-### 国内VPS
-
-[阿里云优惠网](https://www.aliyunyhw.com)
-
-[腾讯云优惠网](https://www.tengxunyunyhw.com)
-
-### VPS信息汇总
-
-[VPS GO](https://www.vpsgo.com)
-
-### 交流、客户端下载、加入交流讨论群（备注ss-fly否则不通过） 
- [![VCRQv4.th.jpg](https://s2.ax1x.com/2019/05/23/VCRQv4.th.jpg)](https://imgchr.com/i/VCRQv4)
-
-
-### 感谢支持
-
-如果喜欢的话可以帮忙点个 `star` 感谢支持 
-
+判断BBR加速有没有开启成功。输入以下命令：
+```
+sysctl net.ipv4.tcp_available_congestion_control
+```
+返回以下则成功
+```
+net.ipv4.tcp_available_congestion_control = bbr cubic reno
+```
