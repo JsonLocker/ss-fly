@@ -13,7 +13,10 @@ option:
  查看ss链接：ss-fly/ss-fly.sh -sslink
  修改配置文件：vim /etc/shadowsocks.json
  ```
- 
+ uninstall:
+ ```
+ ss-fly/ss-fly.sh -uninstall
+ ```
  ### install ssr
  ```
  git clone https://github.com/suniceman/ss-fly
