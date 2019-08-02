@@ -1,6 +1,6 @@
 ### install ss
 ```
- git clone https://github.com/suniceman/ss-fly
+ git clone https://github.com/Jsonlocker/ss-fly
  ss-fly/ss-fly.sh -i jsonlocker 1024
 ```
 option:
